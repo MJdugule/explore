@@ -1,3 +1,10 @@
+import 'dart:convert';
+
+// List<CountryModel> countryFromJson( str) => List<CountryModel>.from(json.decode(str).map((profile) => CountryModel.fromJson(profile)));
+
+CountryModel countryFromJson(String str) =>
+    CountryModel.fromJson(json.decode(str));
+
 class CountryModel {
   Name? name;
   List<String>? tld;
