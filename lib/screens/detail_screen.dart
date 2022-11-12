@@ -19,7 +19,7 @@ class _DetailScreenState extends State<DetailScreen> {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text(widget.details!.name!.common.toString()), backgroundColor: Colors.transparent, elevation: 0, titleTextStyle: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.sm),),
+      appBar: AppBar(centerTitle: true, title: Text(widget.details!.name!.common.toString()), backgroundColor: Colors.transparent, elevation: 0, titleTextStyle: GoogleFonts.poppins( fontWeight: FontWeight.w600, fontSize: 18.sm),),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal:18.0),
         child: ListView(

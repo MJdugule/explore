@@ -15,10 +15,10 @@ class DetailsWidget extends StatelessWidget {
             children: [
               TextSpan(
                 text: text1,
-                  style: GoogleFonts.poppins(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500)
+                  style: GoogleFonts.poppins( fontSize: 14, fontWeight: FontWeight.w600)
               ), TextSpan(
                 text:text2,
-                  style: GoogleFonts.poppins(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w300)
+                  style: GoogleFonts.poppins( fontSize: 14, fontWeight: FontWeight.w300)
               ),
             ]
            ),

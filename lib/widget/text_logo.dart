@@ -15,7 +15,7 @@ class TextLogo extends StatelessWidget {
         children: [
           TextSpan(
             text: "Explore",
-              style: GoogleFonts.lobster(color: Colors.black, fontSize: size, fontWeight: FontWeight.w500)
+              style: GoogleFonts.lobster( fontSize: size, fontWeight: FontWeight.w500)
           ), TextSpan(
             text: ".",
               style: GoogleFonts.lobster(color: Colors.orange, fontSize: 40, fontWeight: FontWeight.w500)
