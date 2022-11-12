@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
            darkTheme: ThemeData(
         brightness: Brightness.dark,
         primaryColor: Colors.purple,            // New
-        accentColor: Colors.purpleAccent,  
+        accentColor: Colors.purpleAccent, 
+        bottomSheetTheme: BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 8, 17, 39)), 
         scaffoldBackgroundColor: Color.fromARGB(255, 8, 17, 39)    // New
       ),      
                              // New

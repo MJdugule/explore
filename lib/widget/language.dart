@@ -13,60 +13,47 @@ class Language extends StatelessWidget {
    return GestureDetector(
     onTap: () {
        showModalBottomSheet(context: context,
-      backgroundColor: Colors.transparent,
+       shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
+     // backgroundColor: Colors.transparent,
        builder: (context) {
-        return Container(
-         // height: 170.h,
-          decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))), child:   StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Row(
-                      children: [
-                        Text("Languages", style: GoogleFonts.poppins(fontSize: 17.h, ), ),
-                        Spacer(),
-                        Container(
-                          color: containerCol,
-                         // height: 10,
-                         // padding: EdgeInsets.all(10),
-                          child: Icon(Icons.close, color: innerCol, size: 20,),)
-                      ],
-                    ),
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return ListView(
+              
+              
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Row(
+                    children: [
+                      Text("Languages", style: GoogleFonts.poppins(fontSize: 17.h, ), ),
+                      Spacer(),
+                      Container(
+                        color: containerCol,
+                       // height: 10,
+                       // padding: EdgeInsets.all(10),
+                        child: Icon(Icons.close, color: innerCol, size: 15,),)
+                    ],
                   ),
-                 Expanded(
-                   child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                     return Text("data");
-                   }),
-                 ),
-                  CheckboxListTile(
-                    //activeColor: mainColor,
-                    checkColor: Colors.white,
-                    title: Text(
-                      "Delete for everyone",
-                      style: GoogleFonts.poppins(
-                        color: Colors.black,
-                        fontSize: 14.sm,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    onChanged: (delUs) {
-                      setState(() {
-                        selected = !delUs!;
-                      });
-                    },
-                    value: !selected,
-                    controlAffinity: ListTileControlAffinity.leading,
-                  ),
-                ],
-              );
-            },
-          ),);
+                ),
+              tile( "Bagari"),
+              tile(
+                 "Deutch"),
+              tile(
+                 "English"),
+              tile( "Espanol"),
+              tile( "Francaise"),
+              tile( "Italiano"),
+              tile( "Portugues"),
+              tile( "Pycckua"),
+              tile( "Svenska"),
+              tile( "Turkce"),
+              tile( "Svenska"),
+            
+              ],
+            );
+          },
+        );
       });
     },
      child: Container(
@@ -94,4 +81,12 @@ class Language extends StatelessWidget {
       ),
    );
   }
+   ListTile tile(language) {
+    return ListTile(
+    dense: true,
+    leading: Text(language.toString()),
+    trailing: Icon(Icons.circle_outlined),
+  );
+  }
 }
+

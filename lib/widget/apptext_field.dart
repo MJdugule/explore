@@ -13,7 +13,7 @@ class AppTextField extends StatelessWidget {
       decoration: BoxDecoration(
         // border: Border.all(width: 1, color: Colors.black54),
         borderRadius: BorderRadius.circular(5),
-        color: Colors.white,
+        //color: Colors.white,
       ),
       child:  TextField(
         decoration: InputDecoration(
@@ -23,13 +23,13 @@ class AppTextField extends StatelessWidget {
           ),
           enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)),
-              borderSide: BorderSide(width: 1,color: Color(0xFFF2F4F7) )
+              borderSide: BorderSide(width: 1,color: Color.fromARGB(255, 72, 82, 101) )
           ),
 
-          fillColor: Color.fromARGB(255, 231, 236, 244),
+          fillColor: Color.fromARGB(255, 72, 82, 101),
           filled: true,
           hintText: 'Search Country',
-          hintStyle: GoogleFonts.aclonica( color: Color(0XFF667085), fontSize: 15, fontWeight: FontWeight.w200, ),
+          hintStyle: TextStyle( color: Color.fromARGB(255, 143, 149, 163), fontSize: 15, fontWeight: FontWeight.w200, ),
           prefixIcon: const Icon(Icons.search, color: Color(0xFF667085),),
 
         ),

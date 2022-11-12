@@ -26,7 +26,7 @@ class _FilterState extends State<Filter> {
         width: 70.h,
         //color: const Color(0xFFFCFCFD),
         decoration: BoxDecoration(
-          color: const Color(0xFFFCFCFD),
+         // color: const Color(0xFFFCFCFD),
             borderRadius: BorderRadius.circular(5),
            
             border: Border.all(

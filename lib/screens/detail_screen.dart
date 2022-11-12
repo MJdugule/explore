@@ -1,5 +1,6 @@
 import 'package:explore/model/country_model.dart';
 import 'package:explore/widget/details_wid.dart';
+import 'package:explore/widget/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -24,12 +25,13 @@ class _DetailScreenState extends State<DetailScreen> {
         padding: const EdgeInsets.symmetric(horizontal:18.0),
         child: ListView(
          children: [
+          ImageSlider(images: [widget.details!.flags!.png.toString(), widget.details!.coatOfArms!.png.toString(), widget.details!.maps!.openStreetMaps.toString()]),
        DetailsWidget(text1: "Population: ", text2: widget.details!.population.toString(),),
        DetailsWidget(text1: "Region: ", text2: widget.details!.region.toString(),),
-       DetailsWidget(text1: "Capital: ", text2: widget.details!.capital![0].toString(),),
+       DetailsWidget(text1: "Capital: ", text2: widget.details!.capital==null ? "N/A" : widget.details!.capital![0].toString(),),
        DetailsWidget(text1: "Motto: ", text2: widget.details!.status.toString(),),
        SizedBox(height: 16.h,),
-       DetailsWidget(text1: "Official language: ", text2: widget.details!.languages!.toString(),),
+       DetailsWidget(text1: "Official language: ", text2: widget.details!.languages == null ?"N/A" : widget.details!.languages.toString(),),
        DetailsWidget(text1: "Ethic group: ", text2: widget.details!.population.toString(),),
        DetailsWidget(text1: "Religion: ", text2: "Christianity".toString(),),DetailsWidget(text1: "Government: ", text2: widget.details!.cca2.toString(),),
        SizedBox(height: 16.h,),
