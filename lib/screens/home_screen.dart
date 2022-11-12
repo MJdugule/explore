@@ -23,24 +23,25 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     //CountryService().getCountryDetails();
     
-            return Consumer(
-              builder: (context, CountryProvider themeProvider, child) {
+            
                 return ScreenUtilInit(
           designSize: const Size(360, 800),
           builder: (context, child) {
                     return Scaffold(appBar: PreferredSize( preferredSize: Size.fromHeight(50.sm), child: 
-                   
-             Consumer(
-              builder: (context, CountryProvider themeProvider, child) {
-                        return SafeArea(
+
+                         SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal:20.0),
-                            child: Row(children: [TextLogo(), Spacer(), IconButton(icon: themeProvider.isDarkMode == "true" ? Icon(Icons.wb_sunny_outlined): Icon(Icons.dark_mode_outlined),onPressed: () {
-                               themeProvider.isDarkMode == "false" ?themeProvider.isDark = "true": themeProvider.isDark = "false";
-                              // setState(() {
-                              //   dark = false;
-                              // });
-                               }), 
+                            child: Row(children: [TextLogo(), Spacer(), Consumer(
+                              builder: (context, CountryProvider themeProvider, child) {
+                                return IconButton(icon: themeProvider.isDarkMode == "true" ? Icon(Icons.wb_sunny_outlined): Icon(Icons.dark_mode_outlined),onPressed: () {
+                                   themeProvider.isDarkMode == "false" ?themeProvider.isDark = "true": themeProvider.isDark = "false";
+                                  // setState(() {
+                                  //   dark = false;
+                                  // });
+                                   });
+                              }
+                            ), 
                             // dark ? IconButton(icon: Icon(Icons.dark_mode_outlined), onPressed: () {
                             //   setState(() {
                             //     dark = false;
@@ -49,11 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             //     dark = true;
                             //   });
                             // },)
+                            
                             ],),
                           ),
-                        );
-                      }
-                    ),),
+                        ),
+                     ),
                     body: FutureBuilder<List<CountryModel>>(
                       future: CountryService().getCountryDetails(),
                       builder: (context, snapshot) {
@@ -130,8 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   }
                 );
-              }
-            );
+            
       
   }
 }
