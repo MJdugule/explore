@@ -1,16 +1,26 @@
-# explore
+## explore
 
-A new Flutter project.
+Country app, made with flutter, 
 
-## Getting Started
+## Code base
 
-This project is a starting point for a Flutter application.
+The folders in Codebase are the widget folder which contains all reusable widget, constants folder for the app theme(color), models for the model files,  screens folder for the screens, service folder for network calls.
 
-A few resources to get you started if this is your first Flutter project:
+## Libraries
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Flutter secured storage: used to store the app preferences for light and dark mode
+Flutter screen util: use for responsiveness and screen size
+dio: used for api calls
+google font: For getting google font type
+cache network image: used to show images from internet
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Challenges
+
+The api response was returning a list of datas, which was returning an error while decoding it,
+
+## Future Feature
+
+## Link to APK
+
+## Appetize Link
+

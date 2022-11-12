@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-// List<CountryModel> countryFromJson( str) => List<CountryModel>.from(json.decode(str).map((profile) => CountryModel.fromJson(profile)));
+List<CountryModel> countryFromJson( str) => List<CountryModel>.from(json.decode(str).map((profile) => CountryModel.fromJson(profile)));
 
-CountryModel countryFromJson(String str) =>
-    CountryModel.fromJson(json.decode(str));
+// CountryModel countryFromJson(String str) =>
+//     CountryModel.fromJson(json.decode(str));
 
 class CountryModel {
   Name? name;
@@ -25,7 +25,7 @@ class CountryModel {
   Translations? translations;
   List<double>? latlng;
   bool? landlocked;
-  int? area;
+  double? area;
   Demonyms? demonyms;
   String? flag;
   Maps? maps;

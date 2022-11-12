@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:explore/model/country_model.dart';
 import 'package:explore/screens/detail_screen.dart';
 import 'package:explore/service/country_service.dart';
 import 'package:explore/widget/apptext_field.dart';
@@ -41,29 +43,46 @@ class _HomeScreenState extends State<HomeScreen> {
             padding:  EdgeInsets.symmetric(horizontal:20.0.h, vertical: 20.h),
             child: Row(children: [Language(), Spacer(), Filter()],),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 1,
-              itemBuilder: ((context, index) {
-              return ListTile(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return DetailScreen();
-                  }));
-                },
-                leading: Container(
-                  height: 45.h,
-                  width: 45.h,
-                  decoration: BoxDecoration(
-                     color: Colors.amber,
-                     borderRadius: BorderRadius.all(Radius.circular(10))
-                  ),
-                 
-                  child: FlutterLogo(),),
-                  title: Text("Atttyyt"),
-                  subtitle: Text("data"),
+          FutureBuilder<CountryModel>(
+            future: CountryService().getCountryDetails(),
+            builder: (context, snapshot) {
+              if(snapshot.connectionState == ConnectionState.done){
+                  return Expanded(
+                child: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: ((context, index) {
+                  return ListTile(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return DetailScreen(details: snapshot.data!,);
+                      }));
+                    },
+                    leading: Container(
+                      height: 45.h,
+                      width: 45.h,
+                      decoration: BoxDecoration(
+                         
+                         borderRadius: BorderRadius.all(Radius.circular(10))
+                      ),
+                     
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: CachedNetworkImage(
+                          fit: BoxFit.cover,
+                              imageUrl: snapshot.data!.flags!.png.toString(),
+                              placeholder: (context, url) => Icon(Icons.flag),
+                              errorWidget: (context, url, error) => Icon(Icons.flag),
+                           ),
+                      )),
+                      title: Text(snapshot.data!.name!.common.toString()),
+                      subtitle: Text(snapshot.data!.capital![0].toString()),
+                  );
+                })),
               );
-            })),
+              }
+             return Center(child: CircularProgressIndicator());
+            
+            }
           )
         ]),
         );
