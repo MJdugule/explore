@@ -73,16 +73,16 @@ class _ImageSliderState extends State<ImageSlider> {
               Positioned(
                 top: 0,
                 bottom: 0,
-                left: 0,
+                left: 10,
                 child: Container(
-                  height: 30,
-                  width: 30,
+                  height: 25,
+                  width: 25,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey,
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
+                    icon: Icon(Icons.arrow_back_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
                     onPressed: () {
                       if (currentIndex == 0) {
                         setState(() {
@@ -105,16 +105,16 @@ class _ImageSliderState extends State<ImageSlider> {
               ),    Positioned(
                 top: 0,
                 bottom: 0,
-                right: 0,
+                right: 10,
                 child: Container(
-                  height: 30,
-                  width: 30,
+                  height: 25,
+                  width: 25,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey,
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.arrow_forward_ios),
+                    icon: Icon(Icons.arrow_forward_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
                     onPressed: () {
                       if (currentIndex == 2) {
                         setState(() {

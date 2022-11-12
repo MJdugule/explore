@@ -19,20 +19,24 @@ class Language extends StatelessWidget {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return ListView(
-              
+              shrinkWrap: true,
               
               children: [
                 Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: Row(
                     children: [
-                      Text("Languages", style: GoogleFonts.poppins(fontSize: 17.h, ), ),
+                      Text("Languages", style: GoogleFonts.poppins(fontSize: 18.sm, ), ),
                       Spacer(),
                       Container(
                         color: containerCol,
                        // height: 10,
                        // padding: EdgeInsets.all(10),
-                        child: Icon(Icons.close, color: innerCol, size: 15,),)
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.close, color: innerCol, size: 15,)),)
                     ],
                   ),
                 ),
@@ -57,9 +61,9 @@ class Language extends StatelessWidget {
       });
     },
      child: Container(
-        padding: EdgeInsets.all(5.h),
-        height: 40.h,
-        width: 60.h,
+        padding: EdgeInsets.all(5.sm),
+        // height: 40.h,
+        // width: 60.h,
         
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -72,7 +76,7 @@ class Language extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(Icons.location_city),
+            Icon(Icons.four_g_plus_mobiledata),
             Text('EN'),
           ],
    

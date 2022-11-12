@@ -26,6 +26,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: ListView(
          children: [
           ImageSlider(images: [widget.details!.flags!.png.toString(), widget.details!.coatOfArms!.png.toString(), widget.details!.maps!.openStreetMaps.toString()]),
+          SizedBox(height: 16.h,),
        DetailsWidget(text1: "Population: ", text2: widget.details!.population.toString(),),
        DetailsWidget(text1: "Region: ", text2: widget.details!.region.toString(),),
        DetailsWidget(text1: "Capital: ", text2: widget.details!.capital==null ? "N/A" : widget.details!.capital![0].toString(),),
