@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                    
                                  },),
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal:20.0.h, vertical: 20.h),
+                      padding:  EdgeInsets.symmetric(horizontal:20.0.sm, vertical: 20.h),
                       child: Row(children: [Language(), Spacer(), Filter()],),
                     ),
                                 Expanded(
@@ -96,8 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         }));
                                       },
                                       leading: Container(
-                                        height: 45.h,
-                                        width: 45.h,
+                                        height: 45.sm,
+                                        width: 45.sm,
                                         decoration: BoxDecoration(
                                            
                                            borderRadius: BorderRadius.all(Radius.circular(10))
