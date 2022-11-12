@@ -43,18 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
             padding:  EdgeInsets.symmetric(horizontal:20.0.h, vertical: 20.h),
             child: Row(children: [Language(), Spacer(), Filter()],),
           ),
-          FutureBuilder<CountryModel>(
+          FutureBuilder<List<CountryModel>>(
             future: CountryService().getCountryDetails(),
             builder: (context, snapshot) {
               if(snapshot.connectionState == ConnectionState.done){
                   return Expanded(
                 child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: snapshot.data!.length,
                   itemBuilder: ((context, index) {
                   return ListTile(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                        return DetailScreen(details: snapshot.data!,);
+                        return DetailScreen(details: snapshot.data![index],);
                       }));
                     },
                     leading: Container(
@@ -69,13 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         child: CachedNetworkImage(
                           fit: BoxFit.cover,
-                              imageUrl: snapshot.data!.flags!.png.toString(),
+                              imageUrl: snapshot.data![index].flags!.png.toString(),
                               placeholder: (context, url) => Icon(Icons.flag),
                               errorWidget: (context, url, error) => Icon(Icons.flag),
                            ),
-                      )),
-                      title: Text(snapshot.data!.name!.common.toString()),
-                      subtitle: Text(snapshot.data!.capital![0].toString()),
+                      )
+                      ),
+                      title: Text(snapshot.data![index].name!.common.toString()),
+                      subtitle: Text(snapshot.data![index].capital==null ? "N/A" : snapshot.data![index].capital![0].toString()),
                   );
                 })),
               );
