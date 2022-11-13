@@ -10,9 +10,10 @@ The folders in Codebase are the widget folder which contains all reusable widget
 
 Flutter secured storage: used to store the app preferences for light and dark mode
 Flutter screen util: use for responsiveness and screen size
-dio: used for api calls
+http: used for api calls
 google font: For getting google font type
 cache network image: used to show images from internet
+provider: for state management
 
 ## Challenges
 
@@ -20,6 +21,7 @@ The api response was returning a list of datas, which was returning an error whi
 
 ## Future Feature
 
+A virtual map to direct individuals on screens, like an AI director
 ## Link to APK
 
 ## Appetize Link

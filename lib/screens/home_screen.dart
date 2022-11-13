@@ -62,9 +62,23 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Column(
                               children: [
                                 SizedBox(height: 20.h,),
-                                 AppTextField(onChanged: (p0) {
-                                   
-                                 },),
+                                 InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder:(context) {
+                                      return Scaffold(
+                                        body: Column(
+                                          children: [
+                                            SafeArea(child: Container()),
+                                            
+                                          ],
+                                        ),
+                                      );
+                                    },));
+                                  },
+                                   child: AppTextField(onChanged: (p0) {
+                                     
+                                   },),
+                                 ),
                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal:20.0.sm, vertical: 20.h),
                       child: Row(children: [Language(), Spacer(), Filter()],),

@@ -13,6 +13,7 @@ class Language extends StatelessWidget {
    return GestureDetector(
     onTap: () {
        showModalBottomSheet(context: context,
+       isScrollControlled: true,
        shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
      // backgroundColor: Colors.transparent,
        builder: (context) {
@@ -53,6 +54,9 @@ class Language extends StatelessWidget {
               tile( "Svenska"),
               tile( "Turkce"),
               tile( "Svenska"),
+              tile('普通话', ),
+                            tile('بالعربية', ),
+                            tile('বাঙ্গালী', ),
             
               ],
             );

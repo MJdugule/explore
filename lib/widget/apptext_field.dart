@@ -1,5 +1,7 @@
+import 'package:explore/repositries/country_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class AppTextField extends StatelessWidget {
    AppTextField({Key? key, required this.onChanged}) : super(key: key);
@@ -7,8 +9,8 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
+    return Consumer(
+      builder: (context, CountryProvider themeProvider, child) {
         return Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
 
@@ -25,15 +27,15 @@ class AppTextField extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   borderSide: BorderSide(width: 1,color: Color(0xFFF2F4F7))
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder:  OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(width: 1,color: Color.fromARGB(255, 72, 82, 101) )
+                  borderSide: BorderSide(width: 1,color: themeProvider.isDarkMode == "true"? Color.fromARGB(255, 72, 82, 101) : Color(0xFFF2F4F7) )
               ),
 
-              fillColor: Color.fromARGB(255, 72, 82, 101),
+              fillColor: themeProvider.isDarkMode == "true"? Color.fromARGB(255, 72, 82, 101) : Color(0xFFF2F4F7),
               filled: true,
               hintText: 'Search Country',
-              hintStyle: TextStyle( color: Color.fromARGB(255, 143, 149, 163), fontSize: 15, fontWeight: FontWeight.w200, ),
+              hintStyle: TextStyle( color: Color.fromARGB(255, 108, 113, 125), fontSize: 15, fontWeight: FontWeight.w200, ),
               prefixIcon: const Icon(Icons.search, color: Color(0xFF667085),),
 
             ),

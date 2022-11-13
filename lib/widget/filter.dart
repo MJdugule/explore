@@ -47,6 +47,94 @@ class _FilterState extends State<Filter> {
                     ),
                   ),
                 ListTile(
+                  onTap: () {
+                    showModalBottomSheet(
+                      //isScrollControlled: true,
+                      context: context, shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))), builder: ((context) {
+                      
+                      return StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                          return Container( child: Column(children: [
+                            ListTile(
+    dense: true,
+    leading: Text("Africa"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+  ListTile(
+    dense: true,
+    leading: Text("Antarctica"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+  
+  ListTile(
+    dense: true,
+    leading: Text("Australia"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+  ListTile(
+    dense: true,
+    leading: Text("Europe"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+  ListTile(
+    dense: true,
+    leading: Text("North America"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+  ListTile(
+    dense: true,
+    leading: Text("South America"),
+    trailing: Icon(Icons.circle_outlined),
+  ),
+      ListTile(
+    dense: true,
+    leading: Text("Time Zone"),
+    trailing: Icon(Icons.arrow_drop_down_outlined),
+  ),
+                           Row(children: [
+               TextButton(
+                                      onPressed: () {
+                                     
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width/3,
+                                        height: 50.sm,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(),
+                                            borderRadius: BorderRadius.circular(2)),
+                                        child: const Text(
+                                          'Reset',
+                                        
+                                        ),
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    TextButton(
+                                      onPressed: () {
+                                     
+                                      },
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width/2,
+                                        height: 50.sm,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color:  Colors.orange,
+                                            borderRadius: BorderRadius.circular(2)),
+                                        child: const Text(
+                                          'Show results',
+                                          style: TextStyle(
+                                             color: Colors.white
+                                            ),
+                                        ),
+                                      ),
+                                    ),
+              ],) 
+                          ],),);
+                        }
+                      );
+                    }));
+                  },
     dense: true,
     leading: Text("Continent"),
     trailing: Icon(Icons.arrow_drop_down),
