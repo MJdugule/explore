@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:explore/model/country_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 class CountryService{
@@ -32,3 +33,5 @@ class CountryService{
    return country;
   }
 }
+
+final countryService = Provider<CountryService>((ref) => CountryService());

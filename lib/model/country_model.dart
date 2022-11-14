@@ -18,7 +18,7 @@ class CountryModel{
   List<String>? altSpellings;
   String? region;
   String? subregion;
-  Languages? languages;
+  Map<String, String>? languages;
   Translations? translations;
   List<double>? latlng;
   bool? landlocked;
@@ -91,8 +91,9 @@ class CountryModel{
     region = json['region'];
     subregion = json['subregion'];
     languages = json['languages'] != null
-        ? Languages.fromJson(json['languages'])
-        : null;
+        ? Map.from(json['languages']).map((key, value) => MapEntry<String, String>(key, value)) : null;
+        // Languages.fromJson(json['languages'])
+        // : null;
     translations = json['translations'] != null
         ? Translations.fromJson(json['translations'])
         : null;
@@ -143,9 +144,9 @@ class CountryModel{
     data['altSpellings'] = altSpellings;
     data['region'] = region;
     data['subregion'] = subregion;
-    if (languages != null) {
-      data['languages'] = languages!.toJson();
-    }
+    // if (languages != null) {
+    //   data['languages'] = languages!.toJson();
+    // }
     if (translations != null) {
       data['translations'] = translations!.toJson();
     }

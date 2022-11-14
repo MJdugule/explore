@@ -8,19 +8,37 @@ import 'package:explore/widget/filter.dart';
 import 'package:explore/widget/language.dart';
 import 'package:explore/widget/text_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+
+// class HomeScreen extends ConsumerStatefulWidget {
+//   const HomeScreen({super.key});
+
+//   @override
+//   _HomeScreenState createState() => _HomeScreenState();
+// }
+
+// class _HomeScreenState extends ConsumerState<HomeScreen> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
-bool dark = false;
-class _HomeScreenState extends State<HomeScreen> {
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,) {
+    
+    var countries = ref.watch(allCountries);
+    var dark = ref.watch(darkModeProvider);
+   
     //CountryService().getCountryDetails();
     
             
@@ -32,14 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
                          SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal:20.0),
-                            child: Row(children: [TextLogo(), Spacer(), Consumer(
-                              builder: (context, CountryProvider themeProvider, child) {
-                                return IconButton(icon: themeProvider.isDarkMode == "true" ? Icon(Icons.wb_sunny_outlined): Icon(Icons.dark_mode_outlined),onPressed: () {
-                                   themeProvider.isDarkMode == "false" ?themeProvider.isDark = "true": themeProvider.isDark = "false";
+                            child: Row(children: [TextLogo(), Spacer(), 
+                             IconButton(icon:dark == "true" ? Icon(Icons.wb_sunny_outlined): Icon(Icons.dark_mode_outlined),onPressed: () {
+                                   ref.read(darkModeProvider.notifier).toggle();
                                   // setState(() {
                                   //   dark = false;
                                   // });
-                                   });
+                                 
                               }
                             ), 
                             // dark ? IconButton(icon: Icon(Icons.dark_mode_outlined), onPressed: () {
@@ -55,50 +72,37 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                      ),
-                    body: FutureBuilder<List<CountryModel>>(
-                      future: CountryService().getCountryDetails(),
-                      builder: (context, snapshot) {
-                        if(snapshot.connectionState == ConnectionState.done){
-                            return Column(
+                    body: countries.when(data: (data) {
+                      var listProvider = StateProvider<List<CountryModel>>( (ref) => data);
+                      var allList = ref.watch(listProvider);
+                        return Column(
                               children: [
                                 SizedBox(height: 20.h,),
-                                 InkWell(
-                                  onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder:(context) {
-                                      return Scaffold(
-                                        body: Column(
-                                          children: [
-                                            SafeArea(child: Container()),
-                                            
-                                          ],
-                                        ),
-                                      );
-                                    },));
-                                  },
-                                   child: AppTextField(onChanged: (p0) {
-                                     
-                                   },),
-                                 ),
+                                
+                                 AppTextField(onChanged: (p0) {
+                          
+                                //  .where((x) => x.name!.official!.startsWith(p0)).toList();
+                                 },),
                     Padding(
                       padding:  EdgeInsets.symmetric(horizontal:20.0.sm, vertical: 20.h),
                       child: Row(children: [Language(), Spacer(), Filter()],),
                     ),
                                 Expanded(
                           child: ListView.builder(
-                                itemCount: snapshot.data!.length,
+                                itemCount: allList.length,
                                 itemBuilder: ((context, index) {
-                                  snapshot.data!
+                                  allList
                                           
                                           .sort((a, b) => a.name!.official!.toString().compareTo(b.name!.official!.toString()));
-                                  //snapshot.data!.sort();
+                                  //data!.sort();
                                 return Column(
                                   children: [
                                     
-                                  index != 0 && snapshot.data![index].name!.official.toString()[0] == snapshot.data![index - 1].name!.official.toString()[0] ? Container(): Row(
+                                  index != 0 && allList[index].name!.official.toString()[0] == allList[index - 1].name!.official.toString()[0] ? Container(): Row(
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.symmetric(vertical:10.0, horizontal: 25),
-                                        child: Text(snapshot.data![index].name!.official.toString()[0]),
+                                        child: Text(allList[index].name!.official.toString()[0]),
                                       ),
                                     ],
                                   ),
@@ -107,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       dense: true,
                                       onTap: () {
                                         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                                          return DetailScreen(details: snapshot.data![index],);
+                                          return DetailScreen(details: allList[index],);
                                         }));
                                       },
                                       leading: Container(
@@ -122,14 +126,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                           borderRadius: BorderRadius.all(Radius.circular(10)),
                                           child: CachedNetworkImage(
                                             fit: BoxFit.cover,
-                                                imageUrl: snapshot.data![index].flags!.png.toString(),
+                                                imageUrl: allList[index].flags!.png.toString(),
                                                 placeholder: (context, url) => Icon(Icons.flag),
                                                 errorWidget: (context, url, error) => Icon(Icons.flag),
                                              ),
                                         )
                                         ),
-                                        title: Text(snapshot.data![index].name!.official.toString()),
-                                        subtitle: Text(snapshot.data![index].capital==null ? "N/A" : snapshot.data![index].capital![0].toString()),
+                                        title: Text(allList[index].name!.official.toString()),
+                                        subtitle: Text(allList[index].capital==null ? "N/A" : allList[index].capital![0].toString()),
                                     ),
                                   ],
                                 );
@@ -137,15 +141,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                               ],
                             );
-                        }
+                    }, error: (error, stackTrace) {
+                      return Center(child: Text(error.toString()),);
+                    }, loading: () {
                        return Center(child: CircularProgressIndicator());
-                      
-                      }
-                    ),
-                    );
+                    },));
+                
                   }
                 );
             
       
   }
 }
+bool dark = false;

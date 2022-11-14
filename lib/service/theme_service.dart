@@ -10,9 +10,9 @@ class ThemePreferences {
 
   }
 
-  getTheme() async {
+  getTheme() {
      var storage =  FlutterSecureStorage();
-    return await storage.read(key: "pref_key",);
+    return storage.read(key: "pref_key",);
    
   }
 }
