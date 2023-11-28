@@ -1,22 +1,24 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:explore/model/country_model.dart';
 import 'package:explore/widget/details_wid.dart';
 import 'package:explore/widget/slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DetailScreen extends StatefulWidget {
+class DetailScreen extends ConsumerStatefulWidget {
   final CountryModel? details;
    const DetailScreen({super.key, this.details});
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  _DetailScreenState createState() => _DetailScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen> {
+class _DetailScreenState extends ConsumerState<DetailScreen> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: Text(widget.details!.name!.common.toString()), backgroundColor: Colors.transparent, elevation: 0, titleTextStyle: GoogleFonts.poppins( fontWeight: FontWeight.w600, fontSize: 18.sp),),
       body: Padding(
@@ -30,8 +32,8 @@ class _DetailScreenState extends State<DetailScreen> {
        DetailsWidget(text1: "Capital: ", text2: widget.details!.capital==null ? "N/A" : widget.details!.capital![0].toString(),),
        DetailsWidget(text1: "Motto: ", text2: widget.details!.status.toString(),),
        SizedBox(height: 16.h,),
-       DetailsWidget(text1: "Official language: ", text2: widget.details!.languages == null ?"N/A" : widget.details!.languages.toString(),),
-       DetailsWidget(text1: "Ethic group: ", text2: widget.details!.population.toString(),),
+       DetailsWidget(text1: "Official language: ", text2: widget.details!.languages == null ?"N/A" : widget.details!.languages!.values.toList().first),
+       DetailsWidget(text1: "Ethic group: ", text2: widget.details!.altSpellings!.join(", ").toString(),),
        DetailsWidget(text1: "Religion: ", text2: "Christianity".toString(),),DetailsWidget(text1: "Government: ", text2: widget.details!.cca2.toString(),),
        SizedBox(height: 16.h,),
        DetailsWidget(text1: "Independence: ", text2: widget.details!.independent.toString(),),
