@@ -27,14 +27,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 return ScreenUtilInit(
           designSize: const Size(360, 800),
           builder: (context, child) {
-                    return Scaffold(appBar: PreferredSize( preferredSize: Size.fromHeight(50.sm), child: 
+                    return Scaffold(appBar: PreferredSize( preferredSize: Size.fromHeight(50.sp), child: 
 
                          SafeArea(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal:20.0),
-                            child: Row(children: [TextLogo(), Spacer(), Consumer(
+                            child: Row(children: [const TextLogo(), const Spacer(), Consumer(
                               builder: (context, CountryProvider themeProvider, child) {
-                                return IconButton(icon: themeProvider.isDarkMode == "true" ? Icon(Icons.wb_sunny_outlined): Icon(Icons.dark_mode_outlined),onPressed: () {
+                                return IconButton(icon: themeProvider.isDarkMode == "true" ? const Icon(Icons.wb_sunny_outlined): const Icon(Icons.dark_mode_outlined),onPressed: () {
                                    themeProvider.isDarkMode == "false" ?themeProvider.isDark = "true": themeProvider.isDark = "false";
                                   // setState(() {
                                   //   dark = false;
@@ -80,8 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                    },),
                                  ),
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal:20.0.sm, vertical: 20.h),
-                      child: Row(children: [Language(), Spacer(), Filter()],),
+                      padding:  EdgeInsets.symmetric(horizontal:20.0.sp, vertical: 20.h),
+                      child: const Row(children: [Language(), Spacer(), Filter()],),
                     ),
                                 Expanded(
                           child: ListView.builder(
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ],
                                   ),
                                     ListTile(
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
                                       dense: true,
                                       onTap: () {
                                         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -111,20 +111,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         }));
                                       },
                                       leading: Container(
-                                        height: 45.sm,
-                                        width: 45.sm,
-                                        decoration: BoxDecoration(
+                                        height: 45.sp,
+                                        width: 45.sp,
+                                        decoration: const BoxDecoration(
                                            
                                            borderRadius: BorderRadius.all(Radius.circular(10))
                                         ),
                                        
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                          borderRadius: const BorderRadius.all(Radius.circular(10)),
                                           child: CachedNetworkImage(
                                             fit: BoxFit.cover,
                                                 imageUrl: snapshot.data![index].flags!.png.toString(),
-                                                placeholder: (context, url) => Icon(Icons.flag),
-                                                errorWidget: (context, url, error) => Icon(Icons.flag),
+                                                placeholder: (context, url) => const Icon(Icons.flag),
+                                                errorWidget: (context, url, error) => const Icon(Icons.flag),
                                              ),
                                         )
                                         ),
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             );
                         }
-                       return Center(child: CircularProgressIndicator());
+                       return const Center(child: CircularProgressIndicator());
                       
                       }
                     ),

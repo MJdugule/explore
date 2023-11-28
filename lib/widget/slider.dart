@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlider extends StatefulWidget {
   final List<String> images;
-  ImageSlider({Key? key, required this.images}) : super(key: key);
+  const ImageSlider({Key? key, required this.images}) : super(key: key);
 
   @override
   State<ImageSlider> createState() => _ImageSliderState();
@@ -44,15 +43,15 @@ class _ImageSliderState extends State<ImageSlider> {
 
                       // ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10)),
                         child: CachedNetworkImage(
                           fit: BoxFit.cover,
                           imageUrl: widget
                               .images[currentIndex % widget.images.length],
                           placeholder: (context, url) =>
-                              Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.map, size: 90,),
+                              const Icon(Icons.map, size: 90,),
                         ),
                       ),
                     )
@@ -77,12 +76,12 @@ class _ImageSliderState extends State<ImageSlider> {
                 child: Container(
                   height: 25,
                   width: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey,
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.arrow_back_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
+                    icon: const Icon(Icons.arrow_back_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
                     onPressed: () {
                       if (currentIndex == 0) {
                         setState(() {
@@ -109,12 +108,12 @@ class _ImageSliderState extends State<ImageSlider> {
                 child: Container(
                   height: 25,
                   width: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey,
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.arrow_forward_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
+                    icon: const Icon(Icons.arrow_forward_ios, size: 12, color: Color.fromARGB(255, 8, 17, 39),),
                     onPressed: () {
                       if (currentIndex == 2) {
                         setState(() {

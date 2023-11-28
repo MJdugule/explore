@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:explore/model/country_model.dart';
 import 'package:http/http.dart' as http;
@@ -26,8 +25,8 @@ class CountryService{
     // print("gggggg${details[0].name!.nativeName!.engs}");
      return details;
         
+    // ignore: empty_catches
     } catch (e) {
-      print(e);
     }
    return country;
   }

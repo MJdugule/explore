@@ -2,7 +2,6 @@ import 'package:explore/model/country_model.dart';
 import 'package:explore/service/country_service.dart';
 import 'package:explore/service/theme_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 
 class CountryProvider extends ChangeNotifier {

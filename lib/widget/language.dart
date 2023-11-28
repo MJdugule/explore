@@ -9,12 +9,11 @@ class Language extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    bool selected = false;
    return GestureDetector(
     onTap: () {
        showModalBottomSheet(context: context,
        isScrollControlled: true,
-       shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
+       shape: const RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
      // backgroundColor: Colors.transparent,
        builder: (context) {
         return StatefulBuilder(
@@ -27,8 +26,8 @@ class Language extends StatelessWidget {
                   padding: const EdgeInsets.all(18.0),
                   child: Row(
                     children: [
-                      Text("Languages", style: GoogleFonts.poppins(fontSize: 18.sm, ), ),
-                      Spacer(),
+                      Text("Languages", style: GoogleFonts.poppins(fontSize: 18.sp, ), ),
+                      const Spacer(),
                       Container(
                         color: containerCol,
                        // height: 10,
@@ -37,7 +36,7 @@ class Language extends StatelessWidget {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Icon(Icons.close, color: innerCol, size: 15,)),)
+                          child: const Icon(Icons.close, color: innerCol, size: 15,)),)
                     ],
                   ),
                 ),
@@ -65,7 +64,7 @@ class Language extends StatelessWidget {
       });
     },
      child: Container(
-        padding: EdgeInsets.all(5.sm),
+        padding: EdgeInsets.all(5.sp),
         // height: 40.h,
         // width: 60.h,
         
@@ -78,7 +77,7 @@ class Language extends StatelessWidget {
             width: 0.5,
           )
         ),
-        child: Row(
+        child: const Row(
           children: [
             ImageIcon(AssetImage("asset/world.png")),
             Text('EN'),
@@ -93,7 +92,7 @@ class Language extends StatelessWidget {
     return ListTile(
     dense: true,
     leading: Text(language.toString()),
-    trailing: Icon(Icons.circle_outlined),
+    trailing: const Icon(Icons.circle_outlined),
   );
   }
 }

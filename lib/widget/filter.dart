@@ -17,10 +17,10 @@ class _FilterState extends State<Filter> {
     onTap: () {
          showModalBottomSheet(context: context,
          
-       shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
+       shape: const RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))),
      // backgroundColor: Colors.transparent,
        builder: (context) {
-        return Container(
+        return SizedBox(
           height: 160,
           child: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
@@ -32,8 +32,8 @@ class _FilterState extends State<Filter> {
                     padding: const EdgeInsets.all(18.0),
                     child: Row(
                       children: [
-                        Text("Filter", style: GoogleFonts.poppins(fontSize: 18.sm, ), ),
-                        Spacer(),
+                        Text("Filter", style: GoogleFonts.poppins(fontSize: 18.sp, ), ),
+                        const Spacer(),
                         Container(
                           color: containerCol,
                          // height: 10,
@@ -42,7 +42,7 @@ class _FilterState extends State<Filter> {
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(Icons.close, color: innerCol, size: 15,)),)
+                            child: const Icon(Icons.close, color: innerCol, size: 15,)),)
                       ],
                     ),
                   ),
@@ -50,55 +50,55 @@ class _FilterState extends State<Filter> {
                   onTap: () {
                     showModalBottomSheet(
                       //isScrollControlled: true,
-                      context: context, shape: RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))), builder: ((context) {
+                      context: context, shape: const RoundedRectangleBorder(side: BorderSide(width: 0.1), borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))), builder: ((context) {
                       
                       return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
-                          return Container( child: Column(children: [
-                            ListTile(
-    dense: true,
-    leading: Text("Africa"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-  ListTile(
-    dense: true,
-    leading: Text("Antarctica"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-  
-  ListTile(
-    dense: true,
-    leading: Text("Australia"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-  ListTile(
-    dense: true,
-    leading: Text("Europe"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-  ListTile(
-    dense: true,
-    leading: Text("North America"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-  ListTile(
-    dense: true,
-    leading: Text("South America"),
-    trailing: Icon(Icons.circle_outlined),
-  ),
-      ListTile(
-    dense: true,
-    leading: Text("Time Zone"),
-    trailing: Icon(Icons.arrow_drop_down_outlined),
-  ),
+                          return Column(children: [
+                            const ListTile(
+                              dense: true,
+                              leading: Text("Africa"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                            const ListTile(
+                              dense: true,
+                              leading: Text("Antarctica"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                            
+                            const ListTile(
+                              dense: true,
+                              leading: Text("Australia"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                            const ListTile(
+                              dense: true,
+                              leading: Text("Europe"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                            const ListTile(
+                              dense: true,
+                              leading: Text("North America"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                            const ListTile(
+                              dense: true,
+                              leading: Text("South America"),
+                              trailing: Icon(Icons.circle_outlined),
+                            ),
+                                const ListTile(
+                              dense: true,
+                              leading: Text("Time Zone"),
+                              trailing: Icon(Icons.arrow_drop_down_outlined),
+                            ),
                            Row(children: [
-               TextButton(
+                                         TextButton(
                                       onPressed: () {
                                      
                                       },
                                       child: Container(
                                         width: MediaQuery.of(context).size.width/3,
-                                        height: 50.sm,
+                                        height: 50.sp,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             border: Border.all(),
@@ -109,14 +109,14 @@ class _FilterState extends State<Filter> {
                                         ),
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     TextButton(
                                       onPressed: () {
                                      
                                       },
                                       child: Container(
                                         width: MediaQuery.of(context).size.width/2,
-                                        height: 50.sm,
+                                        height: 50.sp,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             color:  Colors.orange,
@@ -129,16 +129,16 @@ class _FilterState extends State<Filter> {
                                         ),
                                       ),
                                     ),
-              ],) 
-                          ],),);
+                                        ],) 
+                          ],);
                         }
                       );
                     }));
                   },
     dense: true,
-    leading: Text("Continent"),
-    trailing: Icon(Icons.arrow_drop_down),
-  ),         ListTile(
+    leading: const Text("Continent"),
+    trailing: const Icon(Icons.arrow_drop_down),
+  ),         const ListTile(
     dense: true,
     leading: Text("Time Zone"),
     trailing: Icon(Icons.arrow_drop_down_outlined),
@@ -150,7 +150,7 @@ class _FilterState extends State<Filter> {
                                   },
                                   child: Container(
                                     width: MediaQuery.of(context).size.width/3,
-                                    height: 50.sm,
+                                    height: 50.sp,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         border: Border.all(),
@@ -161,14 +161,14 @@ class _FilterState extends State<Filter> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 TextButton(
                                   onPressed: () {
                                  
                                   },
                                   child: Container(
                                     width: MediaQuery.of(context).size.width/2,
-                                    height: 50.sm,
+                                    height: 50.sp,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         color:  Colors.orange,
@@ -190,7 +190,7 @@ class _FilterState extends State<Filter> {
       });
     },
      child: Container(
-        padding: EdgeInsets.all(5.sm),
+        padding: EdgeInsets.all(5.sp),
       
         //color: const Color(0xFFFCFCFD),
         decoration: BoxDecoration(
@@ -203,9 +203,9 @@ class _FilterState extends State<Filter> {
               width: 0.5,
             )
         ),
-        child: Row(
+        child: const Row(
           children: [
-            const Icon(Icons.filter_alt_outlined),
+            Icon(Icons.filter_alt_outlined),
             Text( 'Filter'),
           ],
    

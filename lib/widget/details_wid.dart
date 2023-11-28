@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class DetailsWidget extends StatelessWidget {
-  String? text1;
-  String? text2;
-   DetailsWidget({super.key, this.text1, this.text2});
+  final String? text1;
+  final String? text2;
+   const DetailsWidget({super.key, this.text1, this.text2});
 
   @override
   Widget build(BuildContext context) {

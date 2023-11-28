@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
           theme:themeProvider.isDarkMode == "true" ? ThemeData(
             brightness: Brightness.dark,
             primaryColor: Colors.purple,            // New
-            accentColor: Colors.purpleAccent, 
-            bottomSheetTheme: BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 8, 17, 39)),
+            hintColor: Colors.purpleAccent, 
+            bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Color.fromARGB(255, 8, 17, 39)),
            
-            scaffoldBackgroundColor: Color.fromARGB(255, 8, 17, 39)    // New
+            scaffoldBackgroundColor: const Color.fromARGB(255, 8, 17, 39)    // New
           ):ThemeData.light(
             useMaterial3: true
           ),
